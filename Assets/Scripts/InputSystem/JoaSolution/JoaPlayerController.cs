@@ -20,7 +20,7 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
     private float _yaw, _pitch;
     private bool _jumpQueued;
     private uint _remainingJumps;
-
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -59,7 +59,6 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
     {
         if ((_jumpResetLayer.value & (1 << other.gameObject.layer)) == 0) return;
         
-        Debug.Log("JUMP LANDED");
         ResetJumps();
     }
 

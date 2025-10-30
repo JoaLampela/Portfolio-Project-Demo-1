@@ -1,16 +1,19 @@
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Joa.Contracts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(PlayerInputManager))]
-public class JoaInputManager : MonoBehaviour
+public sealed class JoaInputManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _playerPrefab;
     
     [Header("Services")]
-    [SerializeField] private MonoBehaviour _bindingStore; // Sample service for demonstration purposes
+    [SerializeField] private Object _bindingStore; // Sample service for demonstration purposes
     private IBindingStore BindingStore => _bindingStore as IBindingStore;
     
     private PlayerInputManager _playerInputManager;
@@ -40,27 +43,58 @@ public class JoaInputManager : MonoBehaviour
         _playerInputManager.onPlayerLeft -= OnPlayerLeft;
     }
     
-    private void OnPlayerJoined(PlayerInput playerInput)
+    // Use async void only when subscribing to events if you cannot edit them to be Func<T, Task>
+    // You MUST handle errors in async void, since they can brick your whole app
+    private async void OnPlayerJoined(PlayerInput playerInput)
     {
-        GameObject go = playerInput.gameObject;
-        IInputReader reader = go.GetComponents<MonoBehaviour>().OfType<IInputReader>().FirstOrDefault()!;
-        IPlayerController controller = go.GetComponents<MonoBehaviour>().OfType<IPlayerController>().FirstOrDefault()!;
+        try
+        {
+            GameObject go = playerInput.gameObject;
+            IInputReader reader = go.GetComponents<MonoBehaviour>().OfType<IInputReader>().FirstOrDefault()!;
+            IPlayerController controller = go.GetComponents<MonoBehaviour>().OfType<IPlayerController>().FirstOrDefault()!;
         
-        reader.Attach(playerInput);
-        reader.Enable();
+            reader.Attach(playerInput);
+            reader.Enable();
         
-        reader.Move += controller.Move;
-        reader.Look += controller.Look;
-        reader.Jump += controller.Jump;
+            reader.Move += controller.Move;
+            reader.Look += controller.Look;
+            reader.Jump += controller.Jump;
         
-        // Rig other services as you add them here (UI/HUD, Glyphs, Camera Rig, Scheme Monitor, etc.)
-        // Example: Loading per-player bindings from an IBindingStore
-        BindingStore?.LoadBindings($"player{playerInput.playerIndex}", playerInput.actions);
+            // Rig other services as you add them here (UI/HUD, Glyphs, Camera Rig, Scheme Monitor, etc.)
+            // Example: Loading per-player bindings from an IBindingStore
+            await (BindingStore?.LoadBindingsAsync(playerInput.playerIndex.ToString(), playerInput.actions) ?? Task.CompletedTask); // Fails on first launch, loads bindings next
+            await (BindingStore?.SaveBindingsAsync(playerInput.playerIndex.ToString(), playerInput.actions) ?? Task.CompletedTask); // Initializes bindings if not present
+        }
+        catch (OperationCanceledException)
+        {
+            // This would be called when an operation is canceled using a CancellationToken
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Exception: {e}");
+        }
     }
     
-    private void OnPlayerLeft(PlayerInput playerInput)
+    // As above so below. As a bonus, here's a sample on how the wrapper events that conform to async Task could look like:
+    /*
+        public event Func<PlayerInput, CancellationToken, Task> OnPlayerJoinedAsync;
+        public event Func<PlayerInput, CancellationToken, Task> OnPlayerLeftAsync;
+     */
+    private async void OnPlayerLeft(PlayerInput playerInput)
     {
-        IInputReader reader = playerInput.GetComponents<MonoBehaviour>().OfType<IInputReader>().FirstOrDefault()!;
-        reader?.Dispose();
+        try
+        {
+            // Handle service cleanup at the end of lifecycle (IDisposables need to be Dispos()'d, etc.)
+            IInputReader reader = playerInput.GetComponents<MonoBehaviour>().OfType<IInputReader>().FirstOrDefault()!;
+            reader?.Dispose();
+
+            // Handle other services here as well, the same as above
+            await (BindingStore?.SaveBindingsAsync(playerInput.playerIndex.ToString(), playerInput.actions) ?? Task.CompletedTask);
+        }
+        catch (OperationCanceledException) {}
+        catch (Exception e)
+        {
+            Debug.LogError($"Exception: {e}");
+        }
     }
 }

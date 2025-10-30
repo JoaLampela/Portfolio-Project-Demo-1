@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class JoaInputReader : MonoBehaviour, IInputReader
+public sealed class JoaInputReader : MonoBehaviour, IInputReader
 {
     [Header("Input Actions")]
     [Tooltip("Vector2 Movement")]
@@ -57,6 +57,13 @@ public class JoaInputReader : MonoBehaviour, IInputReader
         {
             Look?.Invoke(_stickLookRate * Time.deltaTime);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (_disposed) return;
+        
+        Debug.LogWarning("Disabled IInputReader without Disposing first!");
     }
     
     /// <summary>
