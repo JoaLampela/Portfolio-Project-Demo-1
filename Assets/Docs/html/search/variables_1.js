@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jumpforce_0',['jumpForce',['../class_brackeys_solution.html#a3b71dbe90018420dfe5a6c43a9a8e575',1,'BrackeysSolution']]]
+  ['cam_0',['cam',['../class_brackeys_solution.html#a505085b549b55b0e526c8fd56e9529f4',1,'BrackeysSolution']]]
 ];

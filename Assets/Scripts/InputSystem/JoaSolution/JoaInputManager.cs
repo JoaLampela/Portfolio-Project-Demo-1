@@ -20,6 +20,9 @@ public sealed class JoaInputManager : MonoBehaviour
     
     private void Awake()
     {
+        // TODO: Move these to something responsible for Player/UI toggling (pause menu)
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         _playerInputManager = GetComponent<PlayerInputManager>();
         _playerInputManager.playerPrefab = _playerPrefab;
     }

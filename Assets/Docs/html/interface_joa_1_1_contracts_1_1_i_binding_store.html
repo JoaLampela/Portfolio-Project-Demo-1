@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Portfolio Project 1 Demo<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">Portfolio Project 1 Demo<span id="projectnumber">&#160;1.3.0</span>
    </div>
    <div id="projectbrief">A tutorial project by Joa Lampela for Metropolia University of Applied Sciences</div>
   </td>
@@ -105,73 +105,102 @@ $(function(){initNavTree('interface_joa_1_1_contracts_1_1_i_binding_store.html',
   <div class="headertitle"><div class="title">Joa.Contracts.IBindingStore Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for Joa.Contracts.IBindingStore:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_joa_1_1_contracts_1_1_i_binding_store.png" usemap="#Joa.Contracts.IBindingStore_map" alt=""/>
+  <map id="Joa.Contracts.IBindingStore_map" name="Joa.Contracts.IBindingStore_map">
+<area href="class_joa_binding_store.html" alt="JoaBindingStore" shape="rect" coords="0,56,170,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa9365ad222b736a2a21a9ba9b8a61cf9" id="r_aa9365ad222b736a2a21a9ba9b8a61cf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9365ad222b736a2a21a9ba9b8a61cf9">SaveBindings</a> (string key, InputActionAsset actions)</td></tr>
-<tr class="separator:aa9365ad222b736a2a21a9ba9b8a61cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d421c12af8186e18a2caa5d7c7a35e" id="r_af1d421c12af8186e18a2caa5d7c7a35e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1d421c12af8186e18a2caa5d7c7a35e">LoadBindings</a> (string key, InputActionAsset actions)</td></tr>
-<tr class="separator:af1d421c12af8186e18a2caa5d7c7a35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af642d802fd66a1c28551c8c8c3576c84" id="r_af642d802fd66a1c28551c8c8c3576c84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af642d802fd66a1c28551c8c8c3576c84">ClearBindings</a> (string key)</td></tr>
-<tr class="separator:af642d802fd66a1c28551c8c8c3576c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d66b0cad33a47f0d12cc885d185e95a" id="r_a7d66b0cad33a47f0d12cc885d185e95a"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d66b0cad33a47f0d12cc885d185e95a">SaveBindingsAsync</a> (string key, InputActionAsset actions, CancellationToken ct=default)</td></tr>
+<tr class="separator:a7d66b0cad33a47f0d12cc885d185e95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44d10787d598f40c47c64dfe61f61a0" id="r_ab44d10787d598f40c47c64dfe61f61a0"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab44d10787d598f40c47c64dfe61f61a0">LoadBindingsAsync</a> (string key, InputActionAsset actions, CancellationToken ct=default)</td></tr>
+<tr class="separator:ab44d10787d598f40c47c64dfe61f61a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645be4d49a1c5815f5613b9aa6bd41bc" id="r_a645be4d49a1c5815f5613b9aa6bd41bc"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a645be4d49a1c5815f5613b9aa6bd41bc">ClearBindingsAsync</a> (string key, CancellationToken ct=default)</td></tr>
+<tr class="separator:a645be4d49a1c5815f5613b9aa6bd41bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af642d802fd66a1c28551c8c8c3576c84" name="af642d802fd66a1c28551c8c8c3576c84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af642d802fd66a1c28551c8c8c3576c84">&#9670;&#160;</a></span>ClearBindings()</h2>
+<a id="a645be4d49a1c5815f5613b9aa6bd41bc" name="a645be4d49a1c5815f5613b9aa6bd41bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645be4d49a1c5815f5613b9aa6bd41bc">&#9670;&#160;</a></span>ClearBindingsAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Joa.Contracts.IBindingStore.ClearBindings </td>
-          <td>(</td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af1d421c12af8186e18a2caa5d7c7a35e" name="af1d421c12af8186e18a2caa5d7c7a35e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1d421c12af8186e18a2caa5d7c7a35e">&#9670;&#160;</a></span>LoadBindings()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Joa.Contracts.IBindingStore.LoadBindings </td>
+          <td class="memname">Task Joa.Contracts.IBindingStore.ClearBindingsAsync </td>
           <td>(</td>
           <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputActionAsset</td>          <td class="paramname"><span class="paramname"><em>actions</em></span>&#160;)</td>
+          <td class="paramtype">CancellationToken</td>          <td class="paramname"><span class="paramname"><em>ct</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="class_joa_binding_store.html#a18bf3db10918964d7b36702b2b9ddeb2">JoaBindingStore</a>.</p>
+
 </div>
 </div>
-<a id="aa9365ad222b736a2a21a9ba9b8a61cf9" name="aa9365ad222b736a2a21a9ba9b8a61cf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9365ad222b736a2a21a9ba9b8a61cf9">&#9670;&#160;</a></span>SaveBindings()</h2>
+<a id="ab44d10787d598f40c47c64dfe61f61a0" name="ab44d10787d598f40c47c64dfe61f61a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44d10787d598f40c47c64dfe61f61a0">&#9670;&#160;</a></span>LoadBindingsAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Joa.Contracts.IBindingStore.SaveBindings </td>
+          <td class="memname">Task Joa.Contracts.IBindingStore.LoadBindingsAsync </td>
           <td>(</td>
           <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputActionAsset</td>          <td class="paramname"><span class="paramname"><em>actions</em></span>&#160;)</td>
+          <td class="paramtype">InputActionAsset</td>          <td class="paramname"><span class="paramname"><em>actions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken</td>          <td class="paramname"><span class="paramname"><em>ct</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_joa_binding_store.html#a3c84049b58cbbf6373f93630c4d35d68">JoaBindingStore</a>.</p>
+
+</div>
+</div>
+<a id="a7d66b0cad33a47f0d12cc885d185e95a" name="a7d66b0cad33a47f0d12cc885d185e95a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d66b0cad33a47f0d12cc885d185e95a">&#9670;&#160;</a></span>SaveBindingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task Joa.Contracts.IBindingStore.SaveBindingsAsync </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputActionAsset</td>          <td class="paramname"><span class="paramname"><em>actions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken</td>          <td class="paramname"><span class="paramname"><em>ct</em></span><span class="paramdefsep"> = </span><span class="paramdefval">default</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_joa_binding_store.html#a49f31cd949fb3e108682c42cc63a9da0">JoaBindingStore</a>.</p>
 
 </div>
 </div>
@@ -184,7 +213,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_joa.html">Joa</a></li><li class="navelem"><a class="el" href="namespace_joa_1_1_contracts.html">Contracts</a></li><li class="navelem"><a class="el" href="interface_joa_1_1_contracts_1_1_i_binding_store.html">IBindingStore</a></li>
-    <li class="footer">Generated on Thu Oct 23 2025 08:21:04 for Portfolio Project 1 Demo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Thu Nov 20 2025 07:35:29 for Portfolio Project 1 Demo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

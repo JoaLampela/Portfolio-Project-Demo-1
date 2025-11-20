@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gitamendsolution_0',['GitAmendSolution',['../class_git_amend_solution.html',1,'']]]
+  ['codemonkeysolution_0',['CodeMonkeySolution',['../class_code_monkey_solution.html',1,'']]]
 ];

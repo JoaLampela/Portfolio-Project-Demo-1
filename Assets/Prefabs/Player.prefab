@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JoaInputRemapper
   _jumpAction: {fileID: -3483169126346457434, guid: d2ba230613b9fbb439bae46ca8725c02, type: 3}
-  _newKey: k
+  _newKey: Space
   _bindingStore: {fileID: 11400000, guid: 6984bf21a65b0b944b5070558eb2c286, type: 2}
 --- !u!1 &8133576250110860434
 GameObject:

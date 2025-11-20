@@ -1,4 +1,5 @@
 using Joa.Contracts;
+using Pp1.Audio;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -37,6 +38,13 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
         ResetJumps();
     }
     
+    // TODO: REMOVE IN REAL IMPLEMENTATION
+    private void Start()
+    {
+        AudioManager.Instance.SetMasterVolume(0f);
+        PlayMusic();
+    }
+
     private void Update() => _cam.transform.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
 
     private void FixedUpdate()
@@ -45,14 +53,15 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
         _rb.MoveRotation(Quaternion.Euler(0f, _yaw, 0f));
 
         Vector3 translation = transform.right * _moveAxes.x + transform.forward * _moveAxes.y;
-        _rb.MovePosition(_rb.position + translation.normalized * (_moveSpeed * Time.fixedDeltaTime));
-
+        _rb.linearVelocity = new(translation.normalized.x * _moveSpeed, _rb.linearVelocity.y, translation.normalized.z * _moveSpeed);
+        
         if (!_jumpQueued || _remainingJumps <= 0) return;
         
         _jumpQueued = false;
         _remainingJumps--;
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        PlayJumpSound(); // TODO: check method definition
     }
     
     private void OnTriggerEnter(Collider other)
@@ -80,5 +89,16 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
     private void ResetJumps()
     {
         _remainingJumps = _maxJumps;
+    }
+    
+    // THIS IS JUST HERE FOR TESTING! TODO: MAKE A NEW SERVICE FOR A REAL IMPLEMENTATION!
+    private void PlayJumpSound()
+    {
+        AudioManager.PlaySfx("plasma_blast");
+    }
+
+    private void PlayMusic()
+    {
+        AudioManager.PlayMusic("main_theme");
     }
 }
