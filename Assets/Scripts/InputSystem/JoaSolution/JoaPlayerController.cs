@@ -41,7 +41,7 @@ public class JoaPlayerController : MonoBehaviour, IPlayerController
     // TODO: REMOVE IN REAL IMPLEMENTATION
     private void Start()
     {
-        AudioManager.Instance.SetMasterVolume(0f);
+        AudioManager.Instance.SetMasterVolume(0.1f);
         PlayMusic();
     }
 

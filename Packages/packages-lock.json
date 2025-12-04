@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "0bac2f62fcb0acd970bcfc04515fdc1519b6d54f"
     },
+    "com.pp1.audio": {
+      "version": "https://github.com/JoaLampela/com.pp1.audio.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9b260666f568169c11b71faba02af5979ff0e8f0"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,
